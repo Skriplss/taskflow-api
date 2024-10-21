@@ -1,0 +1,7 @@
+Generic single-database configuration with async support.
+
+This configuration supports async SQLAlchemy operations and is configured
+to work with the application's async database engine.
+
+For more information see the Alembic documentation.
+
