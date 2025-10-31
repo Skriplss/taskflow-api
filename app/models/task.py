@@ -2,13 +2,19 @@
 Task database model.
 """
 
+from __future__ import annotations
+
 from datetime import datetime
 from enum import Enum
+from typing import TYPE_CHECKING
 
 from sqlalchemy import Boolean, DateTime, ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
+
+if TYPE_CHECKING:
+    from app.models.user import User
 
 
 class TaskPriority(str, Enum):
@@ -56,7 +62,7 @@ class Task(Base):
     owner_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
 
     # Relationships
-    owner: Mapped["User"] = relationship("User", back_populates="tasks")
+    owner: Mapped[User] = relationship("User", back_populates="tasks")  # type: ignore[name-defined]
 
     def __repr__(self) -> str:
         return f"<Task(id={self.id}, title={self.title}, status={self.status})>"
