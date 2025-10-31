@@ -80,4 +80,3 @@ async def get_current_user_info(
     Requires authentication (Bearer token in Authorization header).
     """
     return current_user
-

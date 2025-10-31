@@ -40,7 +40,9 @@ def get_password_hash(password: str) -> str:
     return pwd_context.hash(password)
 
 
-def create_access_token(subject: str | int, expires_delta: timedelta | None = None) -> str:
+def create_access_token(
+    subject: str | int, expires_delta: timedelta | None = None
+) -> str:
     """
     Create a JWT access token.
 
@@ -85,4 +87,3 @@ def decode_access_token(token: str) -> dict:
         settings.SECRET_KEY,
         algorithms=[settings.ALGORITHM],
     )
-

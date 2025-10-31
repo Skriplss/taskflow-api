@@ -35,7 +35,9 @@ class AuthService:
             raise ConflictException("Email already registered")
 
         # Check if username already exists
-        result = await db.execute(select(User).where(User.username == user_data.username))
+        result = await db.execute(
+            select(User).where(User.username == user_data.username)
+        )
         if result.scalar_one_or_none():
             raise ConflictException("Username already taken")
 
@@ -91,4 +93,3 @@ class AuthService:
         access_token = create_access_token(subject=user.id)
 
         return user, access_token
-

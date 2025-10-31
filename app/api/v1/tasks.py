@@ -167,4 +167,3 @@ async def complete_task(
     Requires authentication. Users can only complete their own tasks.
     """
     return await TaskService.complete_task(db, task_id, current_user)
-

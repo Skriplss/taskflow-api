@@ -83,6 +83,9 @@ async def root():
     return {
         "message": f"Welcome to {settings.APP_NAME}",
         "version": settings.VERSION,
-        "docs": "/docs" if settings.is_development else "Documentation disabled in production",
+        "docs": (
+            "/docs"
+            if settings.is_development
+            else "Documentation disabled in production"
+        ),
     }
-

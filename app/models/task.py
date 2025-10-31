@@ -60,4 +60,3 @@ class Task(Base):
 
     def __repr__(self) -> str:
         return f"<Task(id={self.id}, title={self.title}, status={self.status})>"
-

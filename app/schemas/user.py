@@ -52,4 +52,3 @@ class UserInDB(User):
     """Schema for user stored in database (includes hashed password)."""
 
     hashed_password: str
-

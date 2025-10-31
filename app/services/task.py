@@ -210,4 +210,3 @@ class TaskService:
         await db.refresh(task)
 
         return task
-

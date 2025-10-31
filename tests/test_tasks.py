@@ -107,7 +107,11 @@ class TestGetTasks:
 
     @pytest.mark.asyncio
     async def test_list_tasks_pagination(
-        self, client: AsyncClient, auth_headers: dict, db_session: AsyncSession, test_user: User
+        self,
+        client: AsyncClient,
+        auth_headers: dict,
+        db_session: AsyncSession,
+        test_user: User,
     ):
         """Test task list pagination."""
         # Create multiple tasks
@@ -132,11 +136,17 @@ class TestGetTasks:
 
     @pytest.mark.asyncio
     async def test_list_tasks_filter_by_status(
-        self, client: AsyncClient, auth_headers: dict, db_session: AsyncSession, test_user: User
+        self,
+        client: AsyncClient,
+        auth_headers: dict,
+        db_session: AsyncSession,
+        test_user: User,
     ):
         """Test filtering tasks by status."""
         # Create tasks with different statuses
-        task1 = Task(title="Todo Task", status=TaskStatus.TODO.value, owner_id=test_user.id)
+        task1 = Task(
+            title="Todo Task", status=TaskStatus.TODO.value, owner_id=test_user.id
+        )
         task2 = Task(
             title="In Progress Task",
             status=TaskStatus.IN_PROGRESS.value,
@@ -145,9 +155,7 @@ class TestGetTasks:
         db_session.add_all([task1, task2])
         await db_session.commit()
 
-        response = await client.get(
-            "/api/v1/tasks?status=todo", headers=auth_headers
-        )
+        response = await client.get("/api/v1/tasks?status=todo", headers=auth_headers)
 
         assert response.status_code == 200
         data = response.json()
@@ -213,7 +221,9 @@ class TestUpdateTask:
         assert data["priority"] == "high"
 
     @pytest.mark.asyncio
-    async def test_update_nonexistent_task(self, client: AsyncClient, auth_headers: dict):
+    async def test_update_nonexistent_task(
+        self, client: AsyncClient, auth_headers: dict
+    ):
         """Test updating non-existent task fails."""
         response = await client.put(
             "/api/v1/tasks/99999",
@@ -245,7 +255,9 @@ class TestDeleteTask:
         assert get_response.status_code == 404
 
     @pytest.mark.asyncio
-    async def test_delete_nonexistent_task(self, client: AsyncClient, auth_headers: dict):
+    async def test_delete_nonexistent_task(
+        self, client: AsyncClient, auth_headers: dict
+    ):
         """Test deleting non-existent task fails."""
         response = await client.delete("/api/v1/tasks/99999", headers=auth_headers)
 
@@ -271,11 +283,12 @@ class TestCompleteTask:
         assert data["completed_at"] is not None
 
     @pytest.mark.asyncio
-    async def test_complete_nonexistent_task(self, client: AsyncClient, auth_headers: dict):
+    async def test_complete_nonexistent_task(
+        self, client: AsyncClient, auth_headers: dict
+    ):
         """Test completing non-existent task fails."""
         response = await client.patch(
             "/api/v1/tasks/99999/complete", headers=auth_headers
         )
 
         assert response.status_code == 404
-

@@ -50,7 +50,9 @@ class TestRegistration:
         assert "already registered" in response.json()["detail"].lower()
 
     @pytest.mark.asyncio
-    async def test_register_duplicate_username(self, client: AsyncClient, test_user: User):
+    async def test_register_duplicate_username(
+        self, client: AsyncClient, test_user: User
+    ):
         """Test registration with duplicate username fails."""
         response = await client.post(
             "/api/v1/auth/register",
@@ -163,4 +165,3 @@ class TestCurrentUser:
         )
 
         assert response.status_code == 401
-
