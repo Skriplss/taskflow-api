@@ -2,6 +2,15 @@
 
 Production-ready task management REST API built with FastAPI, PostgreSQL, and Docker. Modern backend architecture with JWT authentication, database migrations, comprehensive testing, and CI/CD pipeline.
 
+## Documentation
+
+- [Quick Start Guide](docs/QUICKSTART.md) - Get started in 5 minutes
+- [API Examples](docs/API_EXAMPLES.md) - Usage examples with curl, Python, JavaScript
+- [Deployment Guide](docs/DEPLOYMENT.md) - Deploy to production
+- [Contributing](docs/CONTRIBUTING.md) - Development workflow and guidelines
+- [Project Summary](docs/PROJECT_SUMMARY.md) - Architecture overview
+- [Changelog](docs/CHANGELOG.md) - Version history
+
 ## Features
 
 - **FastAPI** - Modern, fast web framework
