@@ -329,7 +329,4 @@ docker-compose logs -f api
 
 This project is licensed under the MIT License.
 
-## Author
-
-[Your Name](https://github.com/yourusername)
 
