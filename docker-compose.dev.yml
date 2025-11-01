@@ -24,7 +24,7 @@ services:
       dockerfile: Dockerfile
     container_name: taskapi_dev
     ports:
-      - "8000:8000"
+      - "8001:8000"
     environment:
       - ENVIRONMENT=development
       - DEBUG=True

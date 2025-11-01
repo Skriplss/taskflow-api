@@ -23,7 +23,7 @@ from app.models import Task, User  # noqa: F401
 config = context.config
 
 # Set database URL from environment
-config.set_main_option("sqlalchemy.url", settings.DATABASE_URL_SYNC)
+config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
